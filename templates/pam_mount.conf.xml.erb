@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE pam_mount SYSTEM "pam_mount.conf.xml.dtd">
+<!--
+	This file is being maintained by Puppet.
+ 	DO NOT EDIT
+	See pam_mount.conf(5) for a description.
+-->
+
+<pam_mount>
+
+<% data = scope.lookupvar('pam_mount::config') -%>
+<% if data.is_a? Array -%>
+<% data.each do |entry| -%>
+<% if entry.is_a? Array -%>
+<%= "<#{entry[0]}" -%>
+<% attributes = entry[1] -%>
+<% if attributes.is_a? Hash -%>
+<% attributes.each do |key, value| -%>
+<%= " #{key}\=\"#{value}\"" -%>
+<% end -%>
+<%= " />\n" -%>
+<% elsif attributes.is_a? String -%>
+<%= ">#{attributes}</#{entry[0]}>\n" -%>
+<% else -%>
+<% raise Puppet::Error, "Error: An array inside the pam_mount::config array contained something other than a Hash or a String.
+ pam_mount::config should be an array of nested arrays containing hashes or strings." -%>
+<% end -%>
+<% else -%>
+<% raise Puppet::Error, "Error: The array in pam_mount::config contained something other than an Array.
+ pam_mount::config should be an array of nested arrays containing hashes or strings." -%>
+<% end -%>
+<% end -%>
+<% else -%>
+<% raise Puppet::Error, "Error: pam_mount::config was not an Array.
+ pam_mount::config should be an array of nested arrays containing hashes or strings." -%>
+<% end -%>
+
+</pam_mount>
+
