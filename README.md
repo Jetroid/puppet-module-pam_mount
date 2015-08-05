@@ -85,7 +85,7 @@ The full output in pam_mount.conf.xml for both of these examples is:
 
 ## Limitations
 
-Tested on Ubuntu 14.04 64bit.
+Tested on Ubuntu 14.04 64bit/32bit; Centos 7 64bit; and Centos 6 64bit/32bit.
 
 ## Release Notes/Contributors/Etc 
 
