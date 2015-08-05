@@ -4,8 +4,21 @@ class pam_mount::install (
   $extra_packages     = $pam_mount::extra_packages,
 ) {
 
-  package { $pam_mount_package:
-    ensure => $ensure,
+  if $::osfamily == 'RedHat' {
+    yumrepo { "li.nux.ro":
+      baseurl => "http://li.nux.ro/download/nux/dextop/el${::operatingsystemmajrelease}/${::architecture}/",
+      descr => "nux RedHat Repository",
+      enabled => 1,
+      gpgcheck => 0
+    }->
+    package { 'pam_mount':
+      source => $pam_mount_package,
+      ensure => $ensure,
+    }
+  } elsif $::osfamily == 'Debian' {
+    package { $pam_mount_package:
+      ensure => $ensure,
+    }
   }
 
   if $extra_packages {

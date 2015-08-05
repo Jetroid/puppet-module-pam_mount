@@ -15,9 +15,15 @@ class pam_mount::params {
   ]  
     
   case $::osfamily {
-# TODO
     'Redhat': {
-      $pam_mount_package   = 'pam_mount'
+      case $::operatingsystemmajrelease {
+        '6': {
+          $pam_mount_package = "pam_mount-2.5-2.el6.nux.${::architecture}.rpm"
+        }
+        '7': {
+          $pam_mount_package = "pam_mount-2.14-3.el7.nux.${::architecture}.rpm"
+        }
+      }
       $pam_mount_service   = 'pam_mount'
       $config_file    = '/etc/security/pam_mount.conf.xml'
       $extra_packages = [
