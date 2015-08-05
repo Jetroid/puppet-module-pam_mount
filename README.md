@@ -20,6 +20,8 @@ config
 
 This parameter defines the contents of /etc/security/pam_mount.conf.xml
 It should follow the following structure (Example using Ruby syntax):
+
+```
 [
   ['tagName1',{'parameter' => 'value'}],
   ['tagName2',{'parameter1' => 'value1',
@@ -27,11 +29,14 @@ It should follow the following structure (Example using Ruby syntax):
 	     'parameter3' => 'value3',}]
   ['tagname3','string']
 ]
+```
 
 The above structure would convert to this:
+```
 <tagName1 parameter="value"/>
 <tageName2 parameter1="value1" parameter2="value2" parameter3="value3"/>
 <tagname3>string</tagname3>
+```
 
 The nested arrays must contain exactly two parameters, the first being the name of the tag, 
 and the second being the attributes in the form of either a hash or a string.
@@ -44,31 +49,26 @@ Strings:
 
 Hiera Example:
 
-++++begin-hiera-yaml-example++++
-
+```
 pam_mount::config:
   - - debug
     - enable: "0"
   - - path
     - "/usr/bin:/usr/local/bin"
-
-++++end-hiera-yaml-example++++
+```
 
 Puppet Example: 
 
-++++begin-puppet-example++++
-
+```
 class {'::pam_mount':
   config = [
     ['debug', {'enable'   => '0'}],
     ['path', '/usr/bin:/usr/local/bin'],
   }
-
-++++end-puppet-example++++
+```
 
 The full output in pam_mount.conf.xml for both of these examples is:
-
-
+```
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE pam_mount SYSTEM "pam_mount.conf.xml.dtd">
 <!--
@@ -81,6 +81,7 @@ The full output in pam_mount.conf.xml for both of these examples is:
 <debug enable="0"/>
 <path>/usr/bin:/usr/local/bin</path>
 </pam_mount>
+```
 
 ## Limitations
 
