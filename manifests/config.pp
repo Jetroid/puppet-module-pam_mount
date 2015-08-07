@@ -14,6 +14,7 @@ class pam_mount::config (
     group   => 'root',
     mode    => '0600',
     content => template('pam_mount/pam_mount.conf.xml.erb'),
+    require => Package['pam_mount'],
   }
 
 }
