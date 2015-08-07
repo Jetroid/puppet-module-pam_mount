@@ -15,11 +15,43 @@ pam_mount mounts and unmounts volumes from a central filesystem.
 
 ## Parameters
 
+ensure
+------
+
+Defines if mounthomedir and its relevant packages are to be installed or removed.
+
+Accepts: 'present', 'absent'
+Default: 'present'
+
+pam_mount_package
+-----------------
+
+The name of the pam mount package to install.
+
+Accepts: String
+Default: Depends on OS family and version.
+
+config_file
+-----------
+
+Location of the pam_mount.conf.xml file.
+
+Accepts: String
+Default: '/etc/security/pam_mount.conf.xml'
+
+extra_packages
+--------------
+
+A list of extra packages to install.
+
+Accepts: Array
+Default: []
+
 config
 ------
 
 This parameter defines the contents of /etc/security/pam_mount.conf.xml
-It should follow the following structure (Example using Ruby syntax):
+Accepts: It should follow the following structure (Example using Ruby syntax):
 
 ```
 [
@@ -82,6 +114,15 @@ The full output in pam_mount.conf.xml for both of these examples is:
 <path>/usr/bin:/usr/local/bin</path>
 </pam_mount>
 ```
+
+Default: Results in the following XML:
+```<pam_mount>
+<debug enable="0"/>
+<mntoptions allow="nosuid,nodev,loop,encryption,fsck,nonempty,allow_root,allow_other"/>
+<mntoptions require="nosuid,nodev"/>
+<logout wait="0" hup="0" term="0" kill="0" kill="0"/>
+<mkmountpoint enable="0" remove="true"/>
+</pam_mount>```
 
 ## Limitations
 
