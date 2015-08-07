@@ -24,14 +24,12 @@ class pam_mount::params {
           $pam_mount_package = "pam_mount-2.14-3.el7.nux.${::architecture}.rpm"
         }
       }
-      $pam_mount_service   = 'pam_mount'
       $config_file    = '/etc/security/pam_mount.conf.xml'
       $extra_packages = [
       ]
     }
     'Debian': {
       $pam_mount_package   = 'libpam-mount'
-      $pam_mount_service   = 'pam_mount'
       $config_file    = '/etc/security/pam_mount.conf.xml'
       $extra_packages = [
       ]

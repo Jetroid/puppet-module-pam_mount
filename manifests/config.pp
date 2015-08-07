@@ -4,6 +4,7 @@ class pam_mount::config (
   $config                = $pam_mount::config,
   $pam_mount_package     = $pam_mount::pam_mount_package,
   $config_file           = $pam_mount::config_file,
+  $extra_packages        = $pam_mount::extra_packages,
 ) {
 
   file { 'pam_mount.conf':

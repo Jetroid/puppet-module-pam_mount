@@ -37,8 +37,8 @@ class pam_mount (
   $ensure                = $pam_mount::params::ensure,
   $config                = $pam_mount::params::config,
   $pam_mount_package     = $pam_mount::params::pam_mount_package,
-  $pam_mount_service     = $pam_mount::params::pam_mount_service,
   $config_file           = $pam_mount::params::config_file,
+  $extra_packages        = $pam_mount::params::extra_packages,
 ) inherits pam_mount::params {
 
 validate_re($ensure, '^(present|absent)$',
