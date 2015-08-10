@@ -110,8 +110,10 @@ The full output in pam_mount.conf.xml for both of these examples is:
 -->
 
 <pam_mount>
+
 <debug enable="0"/>
 <path>/usr/bin:/usr/local/bin</path>
+
 </pam_mount>
 ```
 
@@ -120,7 +122,7 @@ Default: Results in the following XML:
 <debug enable="0"/>
 <mntoptions allow="nosuid,nodev,loop,encryption,fsck,nonempty,allow_root,allow_other"/>
 <mntoptions require="nosuid,nodev"/>
-<logout wait="0" hup="0" term="0" kill="0" kill="0"/>
+<logout wait="0" hup="0" term="0" kill="0"/>
 <mkmountpoint enable="0" remove="true"/>
 </pam_mount>```
 
