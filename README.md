@@ -124,8 +124,8 @@ Default: Results in the following XML:
 <mntoptions require="nosuid,nodev"/>
 <logout wait="0" hup="0" term="0" kill="0"/>
 <mkmountpoint enable="0" remove="true"/>
-</pam_mount>```
-
+</pam_mount>
+```
 ## Limitations
 
 Tested on Ubuntu 14.04 64bit/32bit; Centos 7 64bit; and Centos 6 64bit/32bit.
