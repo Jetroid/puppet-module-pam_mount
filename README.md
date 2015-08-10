@@ -3,9 +3,9 @@
 #### Table of Contents
 
 1. [Overview](#overview)
-2. [Module Description - What the module does and why it is useful](#module-description)
-3. [Parameters](#usage)
-4. [Limitations - OS compatibility, etc.](#limitations)
+2. [Parameters](#parameters)
+3. [Limitations](#limitations)
+4. [Release Notes](#release-notes)
 
 ## Overview
 
