@@ -19,6 +19,7 @@ class pam_mount::install (
     }
   } elsif $::osfamily == 'Debian' {
     package { 'pam_mount':
+      name   => $pam_mount_package,
       ensure => $ensure,
     }
   }
